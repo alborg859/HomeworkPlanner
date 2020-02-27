@@ -19,6 +19,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.support.v7.widget.helper.ItemTouchHelper;
@@ -53,7 +54,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity  {
 
 
     //Zrobić settings i tam godzina dla powiadomień, najlepiej jako !!! hour picker!!!  + creditsy dla ikoniarza i autorzy ofc
@@ -70,25 +71,23 @@ public class MainActivity extends AppCompatActivity {
 
 
     HomeworkHelper mHomeworkHelper;
-    ArrayList<String> listItem;
-    ListView listupcoming;
+    RecyclerView listupcoming;
 
     TextView nts;
     public static MainActivity mActivity;
 
 
-    private static final String TAG = "DOBERA";
 
-    public String subjectstr;
+
     public String description;
-    public String date;
+
 
     int outdated;
 
 
 
     ArrayList<Homework> arrayList;
-    MyAdapter myAdapter;
+    MyRecyclerViewAdapter myAdapter;
 
 
 
@@ -101,11 +100,9 @@ public class MainActivity extends AppCompatActivity {
         mHomeworkHelper = new HomeworkHelper(this);
 
         listupcoming = findViewById(R.id.list_up);
-
+        listupcoming.setLayoutManager(new LinearLayoutManager(this));
         nts = findViewById(R.id.txtViewNTS);
 
-
-        listItem = new ArrayList<>();
 
 
 
@@ -178,9 +175,20 @@ public class MainActivity extends AppCompatActivity {
 
     public void loadDataInListView(){
         arrayList = mHomeworkHelper.getAllData(outdated);
-        myAdapter = new MyAdapter(this, arrayList);
+        myAdapter = new MyRecyclerViewAdapter(this, arrayList);
         listupcoming.setAdapter(myAdapter);
         myAdapter.notifyDataSetChanged();
+        myAdapter.setClickListener(new MyRecyclerViewAdapter.ItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Toast.makeText(getApplicationContext(), "gowno", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onLongItemClick(View view, int position) {
+
+            }
+        });
 
         if(arrayList.size()<= 0) {
             nts.setVisibility(View.VISIBLE);
@@ -193,6 +201,8 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
+    //3 kropki
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -226,6 +236,7 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
 
 
 

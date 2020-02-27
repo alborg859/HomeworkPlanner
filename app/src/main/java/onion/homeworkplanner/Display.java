@@ -54,7 +54,6 @@ public class Display extends AppCompatActivity {
     TextView days;
     Button cancel;
     ImageView icon;
-
     Button removebutton;
 
 

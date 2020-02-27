@@ -93,7 +93,6 @@ public class MyAdapter extends BaseAdapter {
 
         final ImageView icon = convertView.findViewById(R.id.subject_icon);
 
-        int[] sicons = {R.drawable.def, R.drawable.art, R.drawable.astronomy, R.drawable.biology, R.drawable.businessstudies, R.drawable.chemistry, R.drawable.citizenship, R.drawable.geography, R.drawable.history, R.drawable.it, R.drawable.law, R.drawable.literature, R.drawable.maths, R.drawable.music, R.drawable.physics, R.drawable.religion, R.drawable.poland, R.drawable.english, R.drawable.spanish, R.drawable.italian, R.drawable.norwegian, R.drawable.russian, R.drawable.niemcy};
 
 
         final TextView subject = (TextView)convertView.findViewById(R.id.hm_subject);
@@ -127,7 +126,7 @@ public class MyAdapter extends BaseAdapter {
                 .with(context)
 
                 .load("https://drive.google.com/uc?id=149j_7DIBEOCBMaGDuqyILmi4-A-u6gSo" )
-                .diskCacheStrategy(DiskCacheStrategy.NONE)
+                .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
                 .placeholder(R.drawable.palitko)
                 .into(icon);
 
@@ -137,7 +136,7 @@ public class MyAdapter extends BaseAdapter {
             Glide
                     .with(context)
                     .load("https://drive.google.com/uc?id=1wgRIjXhWxpDfZh0B65aIZaN7vSpEb7Sq" )
-                    .diskCacheStrategy(DiskCacheStrategy.NONE)
+                    .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
                     .placeholder(R.drawable.palitko)
                     .into(icon);
 
@@ -147,7 +146,7 @@ public class MyAdapter extends BaseAdapter {
             Glide
                     .with(context)
                     .load("https://drive.google.com/uc?id=1Rg1CGgzbfprpYzWQFzY1SMfqDGAUoxM6" )
-                    .diskCacheStrategy(DiskCacheStrategy.NONE)
+                    .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
                     .placeholder(R.drawable.palitko)
                     .into(icon);
         }
@@ -157,7 +156,7 @@ public class MyAdapter extends BaseAdapter {
                     .with(context)
 
                     .load("https://drive.google.com/uc?id=1CsbaNhNmePdSlDxWCATf21Z8I5yW_m17" )
-                    .diskCacheStrategy(DiskCacheStrategy.NONE)
+                    .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
                     .placeholder(R.drawable.palitko)
                     .into(icon);
         }
@@ -166,7 +165,7 @@ public class MyAdapter extends BaseAdapter {
             Glide
                     .with(context)
                     .load("https://drive.google.com/uc?id=1WPjxy09hjDANRZZXIrCBpj1D7NJfbxKr" )
-                    .diskCacheStrategy(DiskCacheStrategy.NONE)
+                    .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
                     .placeholder(R.drawable.palitko)
                     .into(icon);
         }
@@ -175,7 +174,7 @@ public class MyAdapter extends BaseAdapter {
             Glide
                     .with(context)
                     .load("https://drive.google.com/uc?id=1OcXA7MSlYqaH38SclCLevM2I6Qo9-cGI" )
-                    .diskCacheStrategy(DiskCacheStrategy.NONE)
+                    .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
                     .placeholder(R.drawable.palitko)
                     .into(icon);
         }
@@ -184,7 +183,7 @@ public class MyAdapter extends BaseAdapter {
             Glide
                     .with(context)
                     .load("https://drive.google.com/uc?id=1I7HEXVGC83R1KBXtq5ecz9gmRWdadHNQ" )
-                    .diskCacheStrategy(DiskCacheStrategy.NONE)
+                    .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
                     .placeholder(R.drawable.palitko)
                     .into(icon);
         }
@@ -193,7 +192,7 @@ public class MyAdapter extends BaseAdapter {
             Glide
                     .with(context)
                     .load("https://drive.google.com/uc?id=18dySJbkIcL_aZTIIofy6Nxbu4Ns7MquT" )
-                    .diskCacheStrategy(DiskCacheStrategy.NONE)
+                    .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
                     .placeholder(R.drawable.palitko)
                     .into(icon);
         }
@@ -202,7 +201,7 @@ public class MyAdapter extends BaseAdapter {
             Glide
                     .with(context)
                     .load("https://drive.google.com/uc?id=1pSOZUpgLCeZp9PmEI7zyxkZ8RGQrZk3T" )
-                    .diskCacheStrategy(DiskCacheStrategy.NONE)
+                    .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
                     .placeholder(R.drawable.palitko)
                     .into(icon);
         }
@@ -211,7 +210,7 @@ public class MyAdapter extends BaseAdapter {
             Glide
                     .with(context)
                     .load("https://drive.google.com/uc?id=1xreYBoa3q774hldTV9dgHLfifNgL3277" )
-                    .diskCacheStrategy(DiskCacheStrategy.NONE)
+                    .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
                     .placeholder(R.drawable.palitko)
                     .into(icon);
         }
@@ -220,7 +219,7 @@ public class MyAdapter extends BaseAdapter {
             Glide
                     .with(context)
                     .load("https://drive.google.com/uc?id=1XQqNbX4Kl9RqS0Mou2QS9RdrWghdgteE" )
-                    .diskCacheStrategy(DiskCacheStrategy.NONE)
+                    .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
                     .placeholder(R.drawable.palitko)
                     .into(icon);
         }
@@ -229,7 +228,7 @@ public class MyAdapter extends BaseAdapter {
             Glide
                     .with(context)
                     .load("https://drive.google.com/uc?id=10DtdjymWEV32Q1-iratUdsxg6X-IF4Yb" )
-                    .diskCacheStrategy(DiskCacheStrategy.NONE)
+                    .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
                     .placeholder(R.drawable.palitko)
                     .into(icon);
         }
@@ -238,7 +237,7 @@ public class MyAdapter extends BaseAdapter {
             Glide
                     .with(context)
                     .load("https://drive.google.com/uc?id=1xC4E-utzFqsm32j4QlfqN6Ptlt4FM8U0" )
-                    .diskCacheStrategy(DiskCacheStrategy.NONE)
+                    .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
                     .placeholder(R.drawable.palitko)
                     .into(icon);
         }
@@ -247,7 +246,7 @@ public class MyAdapter extends BaseAdapter {
             Glide
                     .with(context)
                     .load("https://drive.google.com/uc?id=1OpYGp31FWCuW7aTPbJG9d5IQH8WL_ZIu" )
-                    .diskCacheStrategy(DiskCacheStrategy.NONE)
+                    .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
 
                     .placeholder(R.drawable.palitko)
                     .into(icon);
@@ -257,7 +256,7 @@ public class MyAdapter extends BaseAdapter {
             Glide
                     .with(context)
                     .load("https://drive.google.com/uc?id=13aW88nY7ngLuErN2azGKAgWJkX-vnVEA" )
-                    .diskCacheStrategy(DiskCacheStrategy.NONE)
+                    .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
 
                     .placeholder(R.drawable.palitko)
                     .into(icon);
@@ -267,7 +266,7 @@ public class MyAdapter extends BaseAdapter {
             Glide
                     .with(context)
                     .load("https://drive.google.com/uc?id=1KEKx1LZAc1y5KQvB0zTd_glONydafR3W" )
-                    .diskCacheStrategy(DiskCacheStrategy.NONE)
+                    .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
 
                     .placeholder(R.drawable.palitko)
                     .into(icon);
@@ -277,7 +276,7 @@ public class MyAdapter extends BaseAdapter {
             Glide
                     .with(context)
                     .load("https://drive.google.com/uc?id=1PiY3w73Y5QJJZWC6mXRiHPX3OR6bSafZ" )
-                    .diskCacheStrategy(DiskCacheStrategy.NONE)
+                    .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
 
                     .placeholder(R.drawable.palitko)
                     .into(icon);
@@ -287,7 +286,7 @@ public class MyAdapter extends BaseAdapter {
             Glide
                     .with(context)
                     .load("https://drive.google.com/uc?id=1qkgp-8WL70RRK4ucGCLgLYRaSzCJxx3S" )
-                    .diskCacheStrategy(DiskCacheStrategy.NONE)
+                    .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
 
                     .placeholder(R.drawable.palitko)
                     .into(icon);
@@ -298,7 +297,7 @@ public class MyAdapter extends BaseAdapter {
                     .with(context)
                     .load("https://drive.google.com/uc?id=1pg84RvqJnVImHp1rfq1VFVRAAAQSYYtO" )
 
-                    .diskCacheStrategy(DiskCacheStrategy.NONE)
+                    .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
                     .placeholder(R.drawable.palitko)
                     .into(icon);
         }
@@ -307,7 +306,7 @@ public class MyAdapter extends BaseAdapter {
             Glide
                     .with(context)
                     .load("https://drive.google.com/uc?id=183pXtdd3MI3JOAm4YAACBsczSqRU0fOP" )
-                    .diskCacheStrategy(DiskCacheStrategy.NONE)
+                    .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
                     .placeholder(R.drawable.palitko)
                     .into(icon);
         }
@@ -316,7 +315,7 @@ public class MyAdapter extends BaseAdapter {
             Glide
                     .with(context)
                     .load("https://drive.google.com/uc?id=1Pnl2dmFK1ITDZ-v7FdfPH3V7mu8_SJNO" )
-                    .diskCacheStrategy(DiskCacheStrategy.NONE)
+                    .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
                     .placeholder(R.drawable.palitko)
                     .into(icon);
         }
@@ -325,7 +324,7 @@ public class MyAdapter extends BaseAdapter {
             Glide
                     .with(context)
                     .load("https://drive.google.com/uc?id=1f15aY30wjU_9Coc3ErfHzGc2gLfm04nL" )
-                    .diskCacheStrategy(DiskCacheStrategy.NONE)
+                    .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
                     .placeholder(R.drawable.palitko)
                     .into(icon);
         }
@@ -335,7 +334,7 @@ public class MyAdapter extends BaseAdapter {
 
                     .with(context)
                     .load("https://drive.google.com/uc?id=1Y7cItjKfwAZJaxoQt7sZ3K1knbyTZlX3" )
-                    .diskCacheStrategy(DiskCacheStrategy.NONE)
+                    .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
                     .placeholder(R.drawable.palitko)
                     .into(icon);
         }
@@ -395,7 +394,7 @@ public class MyAdapter extends BaseAdapter {
 
 
                 String subject_str =  homework.getSubject_homework();
-                 deadline_str = homework.getDate_homework();
+                deadline_str = homework.getDate_homework();
                 String description_str = homework.getDescription_homework();
 
                 int hm_days = homework.getDaysleft_homework();
