@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="onion.homeworkplanner">
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ikona"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:largeHeap="true"
+
+        >
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-9541882283543234~7663711024" />
+
+
+        <meta-data
+            android:name="com.google.android.gms.vision.DEPENDENCIES"
+            android:value="barcode" />
+
+
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".PlanActivity"
+            android:label="Schedule the homework"
+            android:theme="@style/AppTheme.ActionBar" />
+        <activity
+            android:name=".subject"
+            android:label="Add a custom subject"
+            android:theme="@style/AppTheme.ActionBar" />
+        <activity
+            android:name=".EditDataActivity"
+            android:label="Customize a subject"
+            android:theme="@style/AppTheme.ActionBar" />
+        <activity
+            android:name=".EditHomework"
+            android:label="Edit the homework"
+            android:theme="@style/AppTheme.ActionBar" />
+        <activity
+            android:name=".Display"
+            android:label="Your homework"
+            android:theme="@style/AppTheme.ActionBar" />
+
+        <receiver android:name=".AlertReceiverEdit" />
+        <receiver android:name=".AlertReceiver" />
+
+        <activity
+            android:name=".Options"
+            android:label="Options"
+            android:theme="@style/AppTheme.ActionBar" />
+        <activity
+            android:name=".CalendarActivity"
+            android:label="Calendar"
+            android:theme="@style/AppTheme.ActionBar" />
+        <activity android:name=".QRCodeActivity"
+            android:label="Get the QRCode"
+            android:theme="@style/AppTheme.ActionBar"/>
+        <activity android:name=".QRCodeScanner"
+            android:label="Scan the code"
+            android:theme="@style/AppTheme.ActionBar"></activity>
+    </application>
+
+</manifest>

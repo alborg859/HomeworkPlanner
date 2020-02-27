@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditHomework">
+
+
+    <Button
+        android:id="@+id/nopt_btn2"
+        android:layout_width="106dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/roundedbutton_grey"
+        android:fontFamily="@font/nssbold"
+        android:text="Notifying"
+        android:textColor="#fff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button_ededh"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinneredh"
+        style="@style/MySpinnerLook"
+        android:layout_width="225dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:textColor="#000"
+        android:theme="@style/MySpinnerLook"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.903"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewedh"
+        android:layout_width="wrap_content"
+        android:layout_height="22dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="Subject:"
+        android:textColor="#000"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/spinneredh"
+        app:layout_constraintEnd_toStartOf="@+id/spinneredh"
+        app:layout_constraintHorizontal_bias="0.369"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/textView2edh"
+        android:layout_width="89dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="16dp"
+        android:text="Description:"
+        android:textColor="#000"
+
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/editTextedh"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textViewedh"
+        app:layout_constraintTop_toBottomOf="@+id/textViewedh" />
+
+    <TextView
+        android:id="@+id/textView3edh"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="8dp"
+
+        android:text="Deadline:"
+        android:textColor="#000"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView2edh"
+        app:layout_constraintTop_toBottomOf="@+id/editTextedh" />
+
+    <EditText
+        android:id="@+id/editTextedh"
+        android:layout_width="227dp"
+        android:layout_height="73dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/roundinputlarge"
+        android:fontFamily="@font/nslight"
+        android:gravity="top|left"
+        android:maxLength="50"
+        android:maxLines="4"
+        android:paddingTop="-20dp"
+        android:singleLine="false"
+
+        android:textColor="#000"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/spinneredh"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/spinneredh"
+        app:layout_constraintTop_toTopOf="@+id/spinneredh" />
+
+    <CalendarView
+        android:id="@+id/calendarViewedh"
+        android:layout_width="243dp"
+        android:layout_height="302dp"
+        android:layout_marginTop="28dp"
+        android:background="@color/navyBlue"
+        android:clipToPadding="false"
+
+
+        android:minDate=""
+        android:paddingTop="-90dp"
+        android:weekDayTextAppearance="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/spinneredh"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/editTextedh"
+        app:layout_constraintTop_toBottomOf="@+id/editTextedh" />
+
+    <Button
+        android:id="@+id/button_ededh"
+        android:layout_width="106dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/roundedbutton"
+        android:fontFamily="@font/nssbold"
+        android:text="save"
+        android:textColor="@color/white"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calendarViewedh"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/btncanceledh"
+        android:layout_width="106dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/roundedbutton"
+        android:fontFamily="@font/nssbold"
+        android:text="Cancel"
+        android:textColor="@color/white"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.966"
+        app:layout_constraintStart_toEndOf="@+id/button_ededh"
+        app:layout_constraintTop_toBottomOf="@+id/calendarViewedh"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/maxchar3edh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="TextView"
+        android:textColor="@color/silver"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.931"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextedh" />
+
+
+</android.support.constraint.ConstraintLayout>

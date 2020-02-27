@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Homework Organizer</string>
+    <string name="action_settings">Settings</string>
+
+
+    <string-array name="subjects">
+        <item>Maths</item>
+        <item>Quimica</item>
+        <item>Ingles</item>
+        <item>Naturkunde</item>
+        <item>Italy</item>
+        <item>KUTAS</item>
+        <item>EDB</item>
+        <item>Kacper F jak fiut</item>
+    </string-array>
+
+</resources>
