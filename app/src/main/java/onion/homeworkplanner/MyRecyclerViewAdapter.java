@@ -291,11 +291,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
 
     }
 
-    // total number of rows
-    @Override
-    public int getItemCount() {
-        return mData.size();
-    }
+
 
 
     // stores and recycles views as they are scrolled off screen
@@ -358,29 +354,8 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
 
         @Override
         public boolean onLongClick(View view) {
-            if (mClickListener != null) mClickListener.onLongItemClick(view, getAdapterPosition());
 
-
-            cover.setVisibility(View.VISIBLE);
-            remove.setVisibility(View.VISIBLE);
-            cancel.setVisibility(View.VISIBLE);
-            qrcode.setVisibility(View.VISIBLE);
-
-            YoYo.with(Techniques.FadeIn)
-                    .duration(200)
-                    .repeat(0)
-                    .playOn(cover);
-            YoYo.with(Techniques.FadeInUp).duration(220).repeat(0).playOn(qrcode);
-
-            YoYo.with(Techniques.FadeInLeft)
-                    .duration(220)
-                    .repeat(0)
-                    .playOn(remove);
-            YoYo.with(Techniques.FadeInRight)
-                    .duration(220)
-                    .repeat(0)
-                    .playOn(cancel);
-            return true;
+            return false;
 
         }
 
@@ -392,14 +367,35 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     }
 
     // convenience method for getting data at click position
-    Homework getItem(int id) {
+    public Homework getItem(int id) {
         return mData.get(id);
+    }
+
+    public List<Homework> getData(){
+        return mData;
+    }
+
+    // total number of rows
+    @Override
+    public int getItemCount() {
+        return mData.size();
     }
 
     // allows clicks events to be caught
     void setClickListener(ItemClickListener itemClickListener) {
         this.mClickListener = itemClickListener;
     }
+
+    public void removeItem(int position) {
+        mData.remove(position);
+        notifyItemRemoved(position);
+    }
+
+    public void restoreItem(Homework item, int position) {
+        mData.add(position, item);
+        notifyItemInserted(position);
+    }
+
 
     // parent activity will implement this method to respond to click events
     public interface ItemClickListener {

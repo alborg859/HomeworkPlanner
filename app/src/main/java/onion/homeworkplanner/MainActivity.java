@@ -11,10 +11,13 @@ import android.graphics.drawable.ColorDrawable;
 import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Debug;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.renderscript.Element;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.res.ResourcesCompat;
@@ -87,7 +90,8 @@ public class MainActivity extends AppCompatActivity  {
 
 
     ArrayList<Homework> arrayList;
-    MyRecyclerViewAdapter myAdapter;
+    public MyRecyclerViewAdapter myAdapter;
+    CoordinatorLayout coordinatorLayout;
 
 
 
@@ -102,6 +106,7 @@ public class MainActivity extends AppCompatActivity  {
         listupcoming = findViewById(R.id.list_up);
         listupcoming.setLayoutManager(new LinearLayoutManager(this));
         nts = findViewById(R.id.txtViewNTS);
+        coordinatorLayout = findViewById(R.id.coordinator_Layout_Main);
 
 
 
@@ -175,26 +180,102 @@ public class MainActivity extends AppCompatActivity  {
 
     public void loadDataInListView(){
         arrayList = mHomeworkHelper.getAllData(outdated);
-        myAdapter = new MyRecyclerViewAdapter(this, arrayList);
-        listupcoming.setAdapter(myAdapter);
-        myAdapter.notifyDataSetChanged();
-        myAdapter.setClickListener(new MyRecyclerViewAdapter.ItemClickListener() {
-            @Override
-            public void onItemClick(View view, int position) {
-                Toast.makeText(getApplicationContext(), "gowno", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onLongItemClick(View view, int position) {
-
-            }
-        });
 
         if(arrayList.size()<= 0) {
             nts.setVisibility(View.VISIBLE);
         } else  {
             nts.setVisibility(View.INVISIBLE);
+
+            myAdapter = new MyRecyclerViewAdapter(this, arrayList);
+            listupcoming.setAdapter(myAdapter);
+            myAdapter.notifyDataSetChanged();
+            myAdapter.setClickListener(new MyRecyclerViewAdapter.ItemClickListener() {
+                @Override
+                public void onItemClick(View view, int position) {
+
+                }
+
+                @Override
+                public void onLongItemClick(View view, int position) {
+
+                }
+            });
+
+            final SwipeToDeleteCallback swipeToDeleteCallback = new SwipeToDeleteCallback(this) {
+                @Override
+                public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
+
+
+                    if ( i == 4){// Swipe to delete
+
+                    final int position = viewHolder.getAdapterPosition();
+                    final Homework item = myAdapter.getData().get(position);
+
+                    myAdapter.removeItem(position);
+
+
+                    Snackbar snackbar = Snackbar
+                            .make(coordinatorLayout, "Item was removed from the list.", Snackbar.LENGTH_LONG);
+                    snackbar.setAction("UNDO", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+
+                            myAdapter.restoreItem(item, position);
+                            listupcoming.scrollToPosition(position);
+                        }
+                    });
+
+                    snackbar.setActionTextColor(Color.YELLOW);
+                    snackbar.show();
+
+                }
+
+                    else if (i == 8) { // Swipe to qr
+
+                        final int position = viewHolder.getAdapterPosition();
+                        final Homework item = myAdapter.getData().get(position);
+
+
+                        String subject_str =  myAdapter.getItem(position).getSubject_homework();
+                        String deadline_str = myAdapter.getItem(position).getDate_homework();
+                        String description_str = myAdapter.getItem(position).getDescription_homework();
+                        Intent qrintent = new Intent(MainActivity.this, QRCodeActivity.class);
+                        qrintent.putExtra("subject", subject_str);
+                        qrintent.putExtra("desc", description_str);
+                        qrintent.putExtra("deadline", deadline_str);
+                        qrintent.putExtra("alldata", "");
+                        startActivity(qrintent);
+
+                        Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                myAdapter.notifyDataSetChanged();
+                            }
+                        }, 1000);
+
+
+
+
+                    }
+
+
+
+                }
+            };
+
+            ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeToDeleteCallback);
+            itemTouchhelper.attachToRecyclerView(listupcoming);
+
+
+
         }
+
+
+
+
+
+
     }
 
 

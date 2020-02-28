@@ -3,6 +3,7 @@ package onion.homeworkplanner;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Debug;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -39,6 +40,19 @@ public class QRCodeActivity extends AppCompatActivity {
         alldata = receivedIntent.getStringExtra("alldata");
 
 
+
+
+        // Tu kurwa usuwanie swipe z maina
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                MainActivity.mActivity.myAdapter.notifyDataSetChanged();
+            }
+        }, 1000);
+
+
+
         if (alldata.equals("")) {
 
 
@@ -49,6 +63,8 @@ public class QRCodeActivity extends AppCompatActivity {
             try {
                 bitmap = qrgEncoder.encodeAsBitmap();
                 qr.setImageBitmap(bitmap);
+
+
             } catch (WriterException e) {
                 Log.v("xd", e.toString());
             }
