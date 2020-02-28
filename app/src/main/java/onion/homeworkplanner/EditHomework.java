@@ -1,22 +1,14 @@
 package onion.homeworkplanner;
 
 import android.app.AlarmManager;
-import android.app.AlarmManager;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.PendingIntent;
-import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Build;
-import android.support.annotation.RequiresApi;
-import android.support.v4.app.NotificationCompat;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -30,16 +22,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Button;
 import org.joda.time.DateTime;
-import org.joda.time.Period;
-import org.joda.time.PeriodType;
-import org.joda.time.format.PeriodFormatter;
-import org.joda.time.format.PeriodFormatterBuilder;
 
-import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import static org.joda.time.Days.daysBetween;
@@ -117,7 +101,7 @@ public class EditHomework extends AppCompatActivity {
         notifyFrequencyTwoWeeks = false;
 
         // otrzymywanie intentów
-        Intent receivedIntent = getIntent();
+        final Intent receivedIntent = getIntent();
         selectedID = receivedIntent.getIntExtra("id", 1);
         selectedSubject = receivedIntent.getStringExtra("subject");
         selectedDescription = receivedIntent.getStringExtra("description");
@@ -125,7 +109,7 @@ public class EditHomework extends AppCompatActivity {
         selectedDaysLeft = receivedIntent.getIntExtra("daysleft", 1);
 
         c = Calendar.getInstance();
-        Button notificationsOPT = findViewById(R.id.nopt_btn2);
+
 
 
         SharedPreferences sharedPreferences = getSharedPreferences("Settings", Context.MODE_PRIVATE);
@@ -168,135 +152,6 @@ public class EditHomework extends AppCompatActivity {
 
         olddaysleft = daysleftint;
         daysleftEDIT = daysleftint;
-
-        Log.d("Dyas", "Dyas;leftint = " + String.valueOf(olddaysleft));
-
-
-
-
-        final Dialog dialog;
-        final String[] items = {" Day before", " Three days before", " One week before", " Two weeks before"};
-        final ArrayList itemsSelected = new ArrayList();
-        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Select desired notifications:  ");
-        builder.setMultiChoiceItems(items, null,
-
-                new DialogInterface.OnMultiChoiceClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int selectedItemId,
-                                        boolean isSelected) {
-                        if (isSelected) {
-
-
-                            itemsSelected.add(selectedItemId);
-                            Log.d("Items", "Testy: " + itemsSelected);
-
-
-                        } else if (itemsSelected.contains(selectedItemId)) {
-
-
-                            itemsSelected.remove(Integer.valueOf(selectedItemId));
-
-
-                        }
-                    }
-                })
-
-
-
-                .setPositiveButton("Done", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int id) {
-                        //Your logic when OK button is clicked
-
-
-
-                        if (itemsSelected.contains(0 )  ) {
-                            notifyFrequencyOneDay = true;
-                            Log.d("Dialog", "1d");
-                        }
-
-                        if(((AlertDialog) dialog).getListView().getChildAt(1).isEnabled() == true) {
-                            if (itemsSelected.contains(1)) {
-                                notifyFrequencyThreeDays = true;
-                                Log.d("Dialog", "3d");
-                            }}
-
-
-                        if (((AlertDialog) dialog).getListView().getChildAt(2).isEnabled() == true) {
-
-                            if (itemsSelected.contains(2)) {
-                                notifyFrequencyOneWeek = true;
-                                Log.d("Dialog", "1w");
-                            } }
-
-
-                        if(((AlertDialog) dialog).getListView().getChildAt(3).isEnabled() == true) {
-
-                            if (itemsSelected.contains(3)) {
-                                notifyFrequencyTwoWeeks = true;
-                                Log.d("Dialog", "2w");
-                            } }
-
-                    }
-                })
-                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int id) {
-                        itemsSelected.removeAll(itemsSelected);
-                    }
-                })
-
-        ;
-
-
-
-
-
-
-        dialog = builder.create();
-
-        dialog.setOnShowListener(new DialogInterface.OnShowListener(){
-            @Override
-            public void onShow(DialogInterface dialog) {
-
-                if(daysleftEDIT <= 3) {
-                    ((AlertDialog) dialog).getListView().getChildAt(1).setEnabled(false);
-                } else {
-                    ((AlertDialog) dialog).getListView().getChildAt(1).setEnabled(true);
-                }
-
-                if(daysleftEDIT <= 7) {
-                    ((AlertDialog) dialog).getListView().getChildAt(2).setEnabled(false);
-                } else {
-                    ((AlertDialog) dialog).getListView().getChildAt(2).setEnabled(true);
-                }
-
-                if(daysleftEDIT <= 14) {
-                    ((AlertDialog) dialog).getListView().getChildAt(3).setEnabled(false);
-
-                }
-                else
-                {
-                    ((AlertDialog) dialog).getListView().getChildAt(3).setEnabled(true);
-                }
-
-
-            }
-
-
-        });
-
-        notificationsOPT.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.show();
-            }
-        });
-
-
-
-
 
 
 
@@ -404,13 +259,7 @@ public class EditHomework extends AppCompatActivity {
                 newDesc = editText.getText().toString();
                 Display.mdisplay.finish();
 
-                Log.d("Test edit", "ID =  " + selectedID);
-                Log.d("Test edit", "Stary subj =  " + selectedSubject);
-                Log.d("Test edit", "Stary desc =  " + selectedDescription);
-                Log.d("Test edit", "Stary deadline =  " + selectedDeadline);
-                Log.d("Test edit", "Nowy desc =  " + newDesc);
-                Log.d("Test edit", "Nowy subj =  " + newSubject);
-                Log.d("Test edit", "Nowy date =  " + datecontent2);
+
 
                 mHWDB.updateHomework(selectedID, newSubject, selectedSubject, newDesc, selectedDescription, datecontent2, selectedDeadline );
 
@@ -437,24 +286,10 @@ public class EditHomework extends AppCompatActivity {
 
 
 
-                if(notifyFrequencyOneDay == true) {
-                    OpenOneDay(selectedID, selectedDaysLeft, newSubject, newDesc, datecontent2);
-                }
-
-                if(notifyFrequencyThreeDays == true && daysleftEDIT > 3) {
-                    OpenThreeDays(selectedID, selectedDaysLeft, newSubject, newDesc, datecontent2);
-                }
-
-                if(notifyFrequencyOneWeek == true && daysleftEDIT > 7) {
-                    OpenOneWeek(selectedID, selectedDaysLeft, newSubject, newDesc, datecontent2);
-                }
-
-                if(notifyFrequencyTwoWeeks == true && daysleftEDIT > 14) {
-                    OpenTwoWeeks(selectedID, selectedDaysLeft, newSubject, newDesc, datecontent2);
-                }
 
 
-                MainActivity.mActivity.loadDataInListView();
+
+                MainActivity.mActivity.myAdapter.updateItem(receivedIntent.getIntExtra("position", 0),new Homework(selectedID, newSubject, newDesc, datecontent2, selectedDaysLeft ) );
 
 
                 finish();
@@ -540,80 +375,6 @@ public class EditHomework extends AppCompatActivity {
 
 
     }
-
-
-
-
-
-    private void OpenOneDay(int id, int daysleft, String subj, String desc, String date){
-        cMinusOneDay = (Calendar)c.clone();
-        cMinusOneDay.add(Calendar.DATE, -1);
-        Log.d("ID","Test kalendara Dla one DAY" +  cMinusOneDay);
-        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        Intent intent = new Intent(getApplicationContext(), AlertReceiverEdit.class);
-        intent.putExtra("code", id);
-        intent.putExtra("code1", daysleft);
-        intent.putExtra("subj", subj);
-        intent.putExtra("desc", desc);
-        intent.putExtra("date", date);
-        Log.d("ID", "Id dla 1 dnia: " + id);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), id , intent, PendingIntent.FLAG_ONE_SHOT);
-        alarmManager.setExact(AlarmManager.RTC_WAKEUP, cMinusOneDay.getTimeInMillis(), pendingIntent);
-    }
-
-    private void OpenThreeDays(int id, int daysleft, String subj, String desc, String date){
-        cMinusThreeDays = (Calendar)c.clone();
-        cMinusThreeDays.add(Calendar.DATE, -3);
-        Log.d("ID","Test kalendara DLA 3 DAYS" +  cMinusThreeDays);
-        id = id + 30000000; // 30 milionów
-        Log.d("ID", "Id dla 3: " + id);
-        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        Intent intent2 = new Intent(EditHomework.this, AlertReceiverEdit.class);
-        intent2.putExtra("code", id);
-        intent2.putExtra("code1", daysleft);
-        intent2.putExtra("subj", subj);
-        intent2.putExtra("desc", desc);
-        intent2.putExtra("date", date);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, id, intent2, PendingIntent.FLAG_ONE_SHOT);
-        alarmManager.setExact(AlarmManager.RTC_WAKEUP, cMinusThreeDays.getTimeInMillis(), pendingIntent);
-    }
-
-    private void OpenOneWeek(int id, int daysleft, String subj, String desc, String date) {
-        cMinusWeek = (Calendar)c.clone();
-        cMinusWeek.add(Calendar.DATE, -7);
-        Log.d("ID","Test kalendara" +  cMinusWeek);
-        id = id + 60000000;//60 milionów
-        Log.d("ID", "Id dla 1 tgdonia: " + id);
-        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        Intent intent3 = new Intent(EditHomework.this, AlertReceiverEdit.class);
-
-        intent3.putExtra("code", id);
-        intent3.putExtra("code1", daysleft);
-        intent3.putExtra("subj", subj);
-        intent3.putExtra("desc", desc);
-        intent3.putExtra("date", date);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, id, intent3, PendingIntent.FLAG_ONE_SHOT);
-        alarmManager.setExact(AlarmManager.RTC_WAKEUP, cMinusWeek.getTimeInMillis(), pendingIntent);
-    }
-
-    private void OpenTwoWeeks(int id, int daysleft, String subj, String desc, String date){
-        cMinusTwoWeeks = (Calendar)c.clone();
-        cMinusTwoWeeks.add(Calendar.DATE, -14);
-        Log.d("ID","Test kalendara" +  cMinusTwoWeeks);
-        id = id + 90000000;//90 milionów
-        Log.d("ID", "Id dla 2 tyg: " + id);
-        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        Intent intent4 = new Intent(EditHomework.this, AlertReceiverEdit.class);
-        intent4.putExtra("code", id);
-        intent4.putExtra("code1", daysleft);
-        intent4.putExtra("subj", subj);
-        intent4.putExtra("desc", desc);
-        intent4.putExtra("date", date);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, id, intent4, PendingIntent.FLAG_ONE_SHOT);
-        alarmManager.setExact(AlarmManager.RTC_WAKEUP, cMinusTwoWeeks.getTimeInMillis(), pendingIntent);
-    }
-
-
 
 
 

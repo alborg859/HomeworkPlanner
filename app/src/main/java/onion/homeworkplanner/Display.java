@@ -4,35 +4,22 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.media.Image;
 import android.os.Build;
-import android.support.annotation.RequiresApi;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CalendarView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.TextView;
-
-import com.google.zxing.WriterException;
 
 import org.joda.time.DateTime;
 import org.joda.time.Period;
 import org.joda.time.PeriodType;
 import org.joda.time.format.PeriodFormatter;
 import org.joda.time.format.PeriodFormatterBuilder;
-import org.w3c.dom.Text;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import androidmads.library.qrgenearator.QRGContents;
-import androidmads.library.qrgenearator.QRGEncoder;
 
 public class Display extends AppCompatActivity {
 
@@ -42,6 +29,7 @@ public class Display extends AppCompatActivity {
     public String selectedDescription;
     public String selectedDeadline;
     public String selectedDaysleft;
+    public int position;
 
     //bazy danych
     public HomeworkHelper mHWDB;
@@ -111,6 +99,7 @@ public class Display extends AppCompatActivity {
         selectedDescription = receivedIntent.getStringExtra("description");
         selectedDeadline = receivedIntent.getStringExtra("deadline");
         selectedDaysleft = receivedIntent.getStringExtra("daysleft");
+        position = receivedIntent.getIntExtra("position", 0);
 
 
 
@@ -180,6 +169,7 @@ public class Display extends AppCompatActivity {
                 i.putExtra("description", selectedDescription);
                 i.putExtra("deadline", selectedDeadline);
                 i.putExtra("daysleft", daysleft);
+                i.putExtra("position", position);
                 startActivity(i);
                 finish();
 
@@ -217,7 +207,7 @@ public class Display extends AppCompatActivity {
                 alarmManager.cancel(pendingIntent4);
 
 
-                MainActivity.mActivity.loadDataInListView();
+                MainActivity.mActivity.myAdapter.removeItem(position);
                 finish();
 
             }
@@ -225,10 +215,8 @@ public class Display extends AppCompatActivity {
 
 
         cancel.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
-                MainActivity.mActivity.loadDataInListView();
                 finish();
             }
         });

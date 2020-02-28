@@ -1,18 +1,12 @@
 package onion.homeworkplanner;
 
 import android.annotation.TargetApi;
-import android.app.Application;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.ContextWrapper;
-import android.graphics.BitmapFactory;
 import android.os.Build;
-import android.support.v4.app.NotificationCompat;
-
-import android.support.v4.app.NotificationCompat; import java.util.Arrays;
-
-import java.util.Arrays;
+import androidx.core.app.NotificationCompat;
 
 public class NotificationHelper extends ContextWrapper {
     public static final String channelID = "channelID";

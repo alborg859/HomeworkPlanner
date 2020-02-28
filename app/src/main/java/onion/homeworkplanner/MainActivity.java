@@ -1,61 +1,39 @@
 package onion.homeworkplanner;
 
-import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.Cursor;
 import android.graphics.Color;
-import android.graphics.Typeface;
-import android.graphics.drawable.ColorDrawable;
-import android.media.Image;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Debug;
 import android.os.Handler;
 import android.preference.PreferenceManager;
-import android.renderscript.Element;
-import android.support.annotation.NonNull;
-import android.support.annotation.RequiresApi;
-import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.content.res.ResourcesCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.support.v7.widget.helper.ItemTouchHelper;
-import android.text.Layout;
-import android.util.Log;
-import android.view.Gravity;
+
+import androidx.annotation.NonNull;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.ItemTouchHelper;
+
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View.OnClickListener;
-import android.app.Activity;
 
-import android.os.Bundle;
-
-import android.view.View;
-
-import android.view.View.OnClickListener;
-
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
-
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity  {
 
@@ -94,12 +72,26 @@ public class MainActivity extends AppCompatActivity  {
     CoordinatorLayout coordinatorLayout;
 
 
-
+    AdView mAdView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
+
+
+
         mActivity = this;
         mHomeworkHelper = new HomeworkHelper(this);
 
@@ -107,6 +99,8 @@ public class MainActivity extends AppCompatActivity  {
         listupcoming.setLayoutManager(new LinearLayoutManager(this));
         nts = findViewById(R.id.txtViewNTS);
         coordinatorLayout = findViewById(R.id.coordinator_Layout_Main);
+
+
 
 
 
@@ -201,9 +195,11 @@ public class MainActivity extends AppCompatActivity  {
                 }
             });
 
+
+            //swipe controller
             final SwipeToDeleteCallback swipeToDeleteCallback = new SwipeToDeleteCallback(this) {
                 @Override
-                public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
+                public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, final int i) {
 
 
                     if ( i == 4){// Swipe to delete
@@ -212,6 +208,7 @@ public class MainActivity extends AppCompatActivity  {
                     final Homework item = myAdapter.getData().get(position);
 
                     myAdapter.removeItem(position);
+                    mHomeworkHelper.deleteHomework(item.getId(), item.getSubject_homework(), item.getDescription_homework(), item.getDate_homework());
 
 
                     Snackbar snackbar = Snackbar
@@ -221,10 +218,10 @@ public class MainActivity extends AppCompatActivity  {
                         public void onClick(View view) {
 
                             myAdapter.restoreItem(item, position);
+                            mHomeworkHelper.addData(item.getSubject_homework(), item.getDescription_homework(), item.getDate_homework());
                             listupcoming.scrollToPosition(position);
                         }
                     });
-
                     snackbar.setActionTextColor(Color.YELLOW);
                     snackbar.show();
 
@@ -233,7 +230,7 @@ public class MainActivity extends AppCompatActivity  {
                     else if (i == 8) { // Swipe to qr
 
                         final int position = viewHolder.getAdapterPosition();
-                        final Homework item = myAdapter.getData().get(position);
+
 
 
                         String subject_str =  myAdapter.getItem(position).getSubject_homework();
@@ -258,9 +255,6 @@ public class MainActivity extends AppCompatActivity  {
 
 
                     }
-
-
-
                 }
             };
 

@@ -2,32 +2,16 @@ package onion.homeworkplanner;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.os.Build;
-import android.support.annotation.RequiresApi;
-import android.util.Log;import android.content.SharedPreferences;
+import android.util.Log;
 
 import org.joda.time.DateTime;
 
-import org.joda.time.Period;
-import org.joda.time.PeriodType;
-import org.joda.time.format.PeriodFormatter;
-import org.joda.time.format.PeriodFormatterBuilder;
 
-import java.time.LocalDate;
-import java.time.Month;
-import java.time.temporal.ChronoUnit;
-
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.Month;
 import java.util.ArrayList;
-import java.util.Date;
 
 import static org.joda.time.Days.daysBetween;
 

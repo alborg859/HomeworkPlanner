@@ -11,11 +11,11 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Build;
-import android.support.annotation.NonNull;
-import android.support.annotation.RequiresApi;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -27,32 +27,18 @@ import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 
 import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdSize;
-import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
 
 import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.mediation.MediationBannerAd;
+
 import android.os.AsyncTask;
 
 
-
-import java.time.LocalDate;
-import java.time.Month;
-import java.time.temporal.ChronoUnit;
-
 import org.joda.time.DateTime;
-
-import org.joda.time.Period;
-import org.joda.time.PeriodType;
-import org.joda.time.format.PeriodFormatter;
-import org.joda.time.format.PeriodFormatterBuilder;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -61,12 +47,9 @@ import java.util.List;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
-import android.os.Bundle;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Random;
-import java.util.concurrent.ExecutionException;
 
 import es.dmoral.toasty.Toasty;
 
@@ -437,15 +420,14 @@ public class PlanActivity extends AppCompatActivity{
 
             saveData();
 
-                final int random = new Random().nextInt(11) ;
-                if(random == 1 || random == 2 || random ==3 || random==4) {
+
                     if (mInterstitialAd.isLoaded()) {
                         mInterstitialAd.show();
                     } else {
                         Log.d("TAG", "The interstitial wasn't loaded yet.");
                     }
 
-                }
+
                 //adsy masne fest
 
 

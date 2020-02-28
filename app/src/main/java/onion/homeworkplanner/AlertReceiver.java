@@ -1,24 +1,12 @@
 package onion.homeworkplanner;
 
 
-import android.app.NotificationManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
-import android.support.v4.app.NotificationCompat;
+import androidx.core.app.NotificationCompat;
 import android.util.Log;
-
-import org.joda.time.DateTime;
-import org.joda.time.Period;
-import org.joda.time.PeriodType;
-import org.joda.time.format.PeriodFormatter;
-import org.joda.time.format.PeriodFormatterBuilder;
-
-
-import static android.content.Context.NOTIFICATION_SERVICE;
-import static android.support.v4.content.ContextCompat.getSystemService;
 
 
 public class AlertReceiver extends BroadcastReceiver {

@@ -1,14 +1,13 @@
 package onion.homeworkplanner;
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.google.zxing.Result;
-import com.google.zxing.common.StringUtils;
 
 
 import es.dmoral.toasty.Toasty;

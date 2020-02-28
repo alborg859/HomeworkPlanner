@@ -1,12 +1,9 @@
 package onion.homeworkplanner;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.os.CountDownTimer;
-import android.os.Looper;
-import android.support.v7.widget.RecyclerView;
+
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,15 +12,12 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.daimajia.androidanimations.library.Techniques;
-import com.daimajia.androidanimations.library.YoYo;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAdapter.ViewHolder> {
 
@@ -347,6 +341,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
             i.putExtra("description", mData.get(getAdapterPosition()).getDescription_homework());
             i.putExtra("deadline", mData.get(getAdapterPosition()).getDate_homework());
             i.putExtra("daysleft", Integer.toString(mData.get(getAdapterPosition()).getDaysleft_homework()));
+            i.putExtra("position", getAdapterPosition());
             context.startActivity(i);
 
 
@@ -371,6 +366,10 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
         return mData.get(id);
     }
 
+
+
+
+
     public List<Homework> getData(){
         return mData;
     }
@@ -389,6 +388,17 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     public void removeItem(int position) {
         mData.remove(position);
         notifyItemRemoved(position);
+    }
+
+
+    public void updateItem(int position, Homework homework){
+        mData.get(position).setSubject_homework(homework.getSubject_homework());
+        mData.get(position).setDate_homework(homework.getDate_homework());
+        mData.get(position).setDaysleft_homework(homework.getDaysleft_homework());
+        mData.get(position).setDescription_homework(homework.getDescription_homework());
+
+        notifyItemChanged(position);
+
     }
 
     public void restoreItem(Homework item, int position) {
