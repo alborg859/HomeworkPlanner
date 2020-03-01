@@ -83,7 +83,7 @@ public class CalendarActivity extends AppCompatActivity {
         int sizeOfList = myStringList.size() - 1;
         Log.d("size", "soze to je:  " + sizeOfList);
         int i = 0;
-        final CompactCalendarView compactCalendarView = (CompactCalendarView) findViewById(R.id.compactcalendar_view);
+        final CompactCalendarView compactCalendarView = (CompactCalendarView) findViewById(R.id.calendar);
 
         compactCalendarView.shouldScrollMonth(true);
         compactCalendarView.setUseThreeLetterAbbreviation(true);
@@ -107,19 +107,15 @@ public class CalendarActivity extends AppCompatActivity {
             data.set(Calendar.DAY_OF_MONTH, dayint);
 
             long sarmatyzm = data.getTimeInMillis();
-            Log.d("KURWA", " KURWA MAC TO JEST TO: " + sarmatyzm);
 
 
-            Event ev1 = new Event(Color.parseColor("#ef8354"),  data.getTimeInMillis());
+
+            Event ev1 = new Event(Color.parseColor("#bfc0c0"),  data.getTimeInMillis());
             compactCalendarView.addEvent(ev1);
 
 
             i++;
         }
-
-
-
-
 
 
         DEFDATE = String.valueOf(defYear) + "-" + String.valueOf(defMonth) + "-" + String.valueOf(defDay);
@@ -153,7 +149,7 @@ public class CalendarActivity extends AppCompatActivity {
 
             @Override
             public void onMonthScroll(Date firstDayOfNewMonth) {
-            TextView kutasiki = findViewById(R.id.textView13);
+                TextView kutasiki = findViewById(R.id.textView13);
                 Calendar cal = Calendar.getInstance();
                 cal.setTime(firstDayOfNewMonth);
                 int month = cal.get(Calendar.MONTH);

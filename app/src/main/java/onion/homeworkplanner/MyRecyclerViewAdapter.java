@@ -45,7 +45,17 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     public void onBindViewHolder(ViewHolder holder, int position) {
         String subjectString = mData.get(position).getSubject_homework();
         String descString = mData.get(position).getDescription_homework();
-        String deadlineString = mData.get(position).getDate_homework();
+
+
+        String[] d =  mData.get(position).getDate_homework().split("-");
+        if(d[1].length() == 1) d[1] = "0"+d[1];
+        if(d[2].length() == 1) d[2] = "0"+d[2];
+        String formated = d[0] + "-" + d[1] + "-" + d[2];
+
+
+
+        String deadlineString = formated;
+
         String daysleftString = String.valueOf(mData.get(position).getDaysleft_homework());
 
 

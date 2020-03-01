@@ -23,13 +23,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
 
@@ -72,9 +72,15 @@ public class PlanActivity extends AppCompatActivity{
     Calendar cMinusThreeDays;
     Calendar cMinusWeek;
     Calendar cMinusTwoWeeks;
-    
-    
 
+
+    CompactCalendarView calendarIND;
+    ImageButton calendarSAVE;
+    ImageButton calendarCLOSE;
+
+    int DialogCalendarDay;
+     int DialogCalendarMonth;
+    int DialogCalendarYear;
 
     DatabaseHelper mDatabaseHelper;
     HomeworkHelper mHomeworkHelper;
@@ -93,7 +99,7 @@ public class PlanActivity extends AppCompatActivity{
     int settinghour;
     int settingminute;
     int daysleftint = 1;
-
+TextView currentDateTV;
     public static boolean notifyFrequencyOneDay = false;
     public static boolean notifyFrequencyThreeDays = false;
     public static boolean notifyFrequencyOneWeek = false;
@@ -110,6 +116,7 @@ public class PlanActivity extends AppCompatActivity{
     public static Activity fa;
 
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -148,16 +155,21 @@ public class PlanActivity extends AppCompatActivity{
 
         ImageButton addfromQRcode = findViewById(R.id.qrcodeAddButton);
 
-        Button save =findViewById(R.id.button);
+        ImageButton save =findViewById(R.id.save_btn);
 
-        Button cancel = findViewById(R.id.btncancel);
+        ImageButton cancel = findViewById(R.id.cancel_btn);
+
+
         c = Calendar.getInstance();
         cMinusOneDay = Calendar.getInstance();
         cMinusThreeDays =  Calendar.getInstance();
         cMinusWeek =  Calendar.getInstance();
         cMinusTwoWeeks =  Calendar.getInstance();
 
-        Button notificationOptionsBTN = findViewById(R.id.nopt_btn);
+
+
+        ImageButton calendarSHOW = findViewById(R.id.calendarSHOW);
+       ImageButton notificationOptionsBTN = findViewById(R.id.notification_button);
 
         SharedPreferences sharedPreferences = getSharedPreferences("Settings", Context.MODE_PRIVATE);
         settinghour = sharedPreferences.getInt("Hour", 12);
@@ -182,7 +194,7 @@ public class PlanActivity extends AppCompatActivity{
 
 
 
-        calender = (CalendarView)findViewById(R.id.calendarView);
+        //calender = (CalendarView)findViewById(R.id.calendarView);
 
 
 
@@ -190,11 +202,127 @@ public class PlanActivity extends AppCompatActivity{
 
         Date dt = new Date();
         DateTime dtOrg = new DateTime(dt);
-        DateTime dtPlusOne = dtOrg.plusDays(1);
+        final DateTime dtPlusOne = dtOrg.plusDays(1);
         defYear = dtPlusOne.getYear();
         defMonth = dtPlusOne.getMonthOfYear();
         defDay = dtPlusOne.getDayOfMonth();
         String DEFDATE = String.valueOf(defYear) + "-" + String.valueOf(defMonth) + "-" + String.valueOf(defDay);
+        datecontent = DEFDATE;
+
+        String[] d = DEFDATE.split("-");
+        if(d[1].length() == 1) d[1] = "0"+d[1];
+        if(d[2].length() == 1) d[2] = "0"+d[2];
+        String formated = d[0] + "-" + d[1] + "-" + d[2];
+
+        currentDateTV = findViewById(R.id.currentDateTV);
+        currentDateTV.setText(formated);
+
+
+        final Dialog calendarDialog;
+        final AlertDialog.Builder calBuilder = new AlertDialog.Builder(this);
+        calBuilder.setView(R.layout.calendar_dialog);
+        calendarDialog = calBuilder.create();
+
+
+        calendarDialog.setOnShowListener(new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(DialogInterface dialog) {
+
+
+                final String[] months= {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
+                calendarIND = calendarDialog.findViewById(R.id.calendar);
+                calendarSAVE = calendarDialog.findViewById(R.id.save_btn_cal);
+               calendarCLOSE = calendarDialog.findViewById(R.id.cancel_btn_cal);
+              final TextView k = calendarDialog.findViewById(R.id.monthTextView);
+
+
+
+                Date dt = new Date();
+                DateTime dto = new DateTime(dt).plusDays(1);
+                DialogCalendarDay = dto.getDayOfMonth();
+                DialogCalendarMonth = dto.getMonthOfYear();
+                DialogCalendarYear = dto.getYear();
+                calendarIND.setCurrentDate(dto.toDate());
+                k.setText(months[DialogCalendarMonth-1] + " " + String.valueOf(DialogCalendarYear));
+
+                Log.wtf("gucci", dto.toDate().toString());
+               calendarIND.setListener(new CompactCalendarView.CompactCalendarViewListener() {
+
+
+
+                   @Override
+                   public void onDayClick(Date dateClicked) {
+                       Calendar cal = Calendar.getInstance();
+                       cal.setTime(dateClicked);
+                       DialogCalendarDay = cal.get(Calendar.DAY_OF_MONTH);
+                       DialogCalendarMonth = cal.get(Calendar.MONTH)+1;
+                       DialogCalendarYear = cal.get(Calendar.YEAR);
+
+
+                   }
+
+                   @Override
+                   public void onMonthScroll(Date firstDayOfNewMonth) {
+
+                       Calendar cal = Calendar.getInstance();
+                       cal.setTime(firstDayOfNewMonth);
+                       int month = cal.get(Calendar.MONTH);
+                       int year = cal.get(Calendar.YEAR);
+
+
+
+                      k.setText(months[month] + " " + String.valueOf(year));
+                   }
+               });
+
+
+               calendarSAVE.setOnClickListener(new View.OnClickListener() {
+                   @Override
+                   public void onClick(View v) {
+
+                       String DATE = String.valueOf(DialogCalendarYear) + "-" + String.valueOf(DialogCalendarMonth) + "-" + String.valueOf(DialogCalendarDay);
+
+                           String[] l = DATE.split("-");
+                           int yearint = Integer.parseInt(l[0]);
+                           int monthint = Integer.parseInt(l[1]);
+                           int dayint = Integer.parseInt(l[2]);
+                           DateTime startDate = DateTime.now();
+                           DateTime startDateTest = new DateTime(startDate.getYear(), startDate.getMonthOfYear(), startDate.getDayOfMonth(), 12, 0 );
+                           DateTime dateAfterTest = new DateTime(yearint, monthint, dayint, 12, 0);
+                           int noOfDaysBetween = daysBetween(startDateTest.toLocalDate(), dateAfterTest.toLocalDate()).getDays();
+                           daysleftint = (int)noOfDaysBetween ;
+
+                           if(daysleftint > 0) datecontent = DATE;
+
+
+                       String[] d = datecontent.split("-");
+                       if(d[1].length() == 1) d[1] = "0"+d[1];
+                       if(d[2].length() == 1) d[2] = "0"+d[2];
+                       String formated = d[0] + "-" + d[1] + "-" + d[2];
+                       currentDateTV.setText(formated);
+
+
+
+
+                        Log.wtf("gucci", String.valueOf(daysleftint));
+
+                       calendarDialog.dismiss();
+                   }
+               });
+
+               calendarCLOSE.setOnClickListener(new View.OnClickListener() {
+                   @Override
+                   public void onClick(View v) {
+
+                       calendarDialog.dismiss();
+                   }
+               });
+
+
+            }
+        });
+
+
 
 
 
@@ -331,65 +459,16 @@ public class PlanActivity extends AppCompatActivity{
             }
         });
 
-        calender.setMinDate(System.currentTimeMillis() + 86400000);
-
-        calender.setDate(System.currentTimeMillis() + 86400000);
-
-        calender.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
-            @RequiresApi(api = Build.VERSION_CODES.O)
-            @Override
-            public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
-
-                rok = year;
-                miesiac = month;
-                dzien = dayOfMonth;
-
-                Log.d("Godzina", "godzina powiadomienia to: " + settinghour);
-                Log.d("Godzina", "minuta powiadomienia to: " + settingminute);
-
-
-                c.set(Calendar.YEAR, year);
-                c.set(Calendar.MONTH, month);
-                c.set(Calendar.DAY_OF_MONTH, dayOfMonth ); // usunąć -1
-                c.set(Calendar.HOUR_OF_DAY, settinghour); // ustawić o której ma przychodzić np. w settings
-                c.set(Calendar.MINUTE, settingminute);
-                c.set(Calendar.SECOND, 0);
-
-                String DATE = String.valueOf(rok) + "-" + String.valueOf(miesiac + 1) + "-" + String.valueOf(dzien);
-
-
-                String [] dateParts = DATE.split("-");
-                String day = dateParts[2];
-                String month1 = dateParts[1];
-                String year1 = dateParts[0];
-                int dayint = Integer.parseInt(day);
-                int monthint = Integer.parseInt(month1);
-                int yearint = Integer.parseInt(year1);
 
 
 
-                DateTime startDate = DateTime.now();
-                DateTime startDateTest = new DateTime(startDate.getYear(), startDate.getMonthOfYear(), startDate.getDayOfMonth(), 12, 0 );
-                DateTime dateAfterTest = new DateTime(yearint, monthint, dayint, 12, 0);
-                int noOfDaysBetween = daysBetween(startDateTest.toLocalDate(), dateAfterTest.toLocalDate()).getDays();
-
-
-
-                daysleftint = (int)noOfDaysBetween ;
-
-                datecontent = DATE;
-
-
-            }
-        });
-        datecontent = DEFDATE;
 
 
 
         EditText description = findViewById(R.id.editText);
         final TextView maxchars3 = findViewById(R.id.maxchar3);
 
-        maxchars3.setText("0/50");
+        maxchars3.setText("0/100");
         description.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -398,7 +477,7 @@ public class PlanActivity extends AppCompatActivity{
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                maxchars3.setText(String.valueOf(s.length()) + " / 50");
+                maxchars3.setText(String.valueOf(s.length()) + " / 100");
             }
 
             @Override
@@ -422,7 +501,8 @@ public class PlanActivity extends AppCompatActivity{
 
 
                     if (mInterstitialAd.isLoaded()) {
-                        mInterstitialAd.show();
+                       //TODO: turn on the AD after devv
+                        // mInterstitialAd.show();
                     } else {
                         Log.d("TAG", "The interstitial wasn't loaded yet.");
                     }
@@ -472,6 +552,13 @@ public class PlanActivity extends AppCompatActivity{
         });
 
 
+
+        calendarSHOW.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                calendarDialog.show();
+            }
+        });
 
     }
 

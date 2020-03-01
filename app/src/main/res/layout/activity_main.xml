@@ -41,18 +41,20 @@
         android:clickable="true"
         app:layout_anchor="@+id/include"
         app:layout_anchorGravity="left|bottom"
-        app:srcCompat="@drawable/calendaricon" />
+        app:srcCompat="@drawable/calendarico" />
 
-
+<!--
     <com.google.android.gms.ads.AdView
         android:id="@+id/adView"
-        android:layout_width="wrap_content"
+        android:layout_width="208dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_gravity="bottom|center_horizontal"
         app:adSize="BANNER"
         app:adUnitId="ca-app-pub-9541882283543234/4410674990"/>
+        -->
+
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

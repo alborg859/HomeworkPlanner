@@ -3,11 +3,11 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_pressed="false">
         <shape android:shape="rectangle">
-            <corners android:radius="1000dp" />
+
             <solid android:color="@color/orange" />
             <stroke
                 android:width="2dip"
-                android:color="#cc7048" />
+                android:color="@color/lightBlue" />
             <padding
                 android:bottom="4dp"
                 android:left="4dp"
@@ -17,11 +17,11 @@
     </item>
     <item android:state_pressed="true">
         <shape android:shape="rectangle">
-            <corners android:radius="1000dp" />
-            <solid android:color="#ff9669" />
+
+            <solid android:color="#3d4259" />
             <stroke
                 android:width="2dip"
-                android:color="#cc7048" />
+                android:color="@color/lightBlue" />
             <padding
                 android:bottom="4dp"
                 android:left="4dp"

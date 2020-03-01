@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,7 +17,7 @@ public class EditDataActivity extends AppCompatActivity {
     private static final String TAG = "Listy";
     DatabaseHelper mDatabaseHelper;
 
-    private Button btnClose, btnDelete;
+    private ImageButton btnClose, btnDelete;
     private EditText nazwa;
     private ImageView obrazek;
 

@@ -8,19 +8,16 @@
 
     <Button
         android:id="@+id/buttonqr"
-        android:layout_width="200dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="8dp"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="4dp"
         android:background="@drawable/roundedbutton"
         android:fontFamily="@font/nssbold"
         android:gravity="center_vertical|center"
         android:text="Export all homeworks"
         android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.484"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textView14"
+        app:layout_constraintStart_toStartOf="@+id/textView14"
         app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
     <Button
@@ -29,7 +26,7 @@
         android:layout_height="45dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="4dp"
+        android:layout_marginBottom="40dp"
         android:background="@drawable/roundedbutton"
         android:fontFamily="@font/nssbold"
         android:gravity="center_vertical|center"
@@ -37,13 +34,38 @@
         android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@+id/textView12"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/buttontimepick"
+        android:layout_width="93dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/roundedbutton"
+        android:fontFamily="@font/nssbold"
+        android:gravity="center_vertical|center"
+        android:text="Pick"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/Pickeddate"
+        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+    <Spinner
+        android:id="@+id/spinner2"
+        android:layout_width="188dp"
+        android:layout_height="38dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/roundinputlarge"
+        app:layout_constraintBottom_toBottomOf="@+id/labelspinner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.421"
+        app:layout_constraintStart_toEndOf="@+id/labelspinner"
+        app:layout_constraintTop_toTopOf="@+id/labelspinner" />
 
     <TextView
         android:id="@+id/textView14"
-        android:layout_width="314dp"
-        android:layout_height="72dp"
+        android:layout_width="323dp"
+        android:layout_height="37dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:fontFamily="@font/nsregular"
@@ -79,23 +101,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/buttontimepick"
-        android:layout_width="106dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="104dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/roundedbutton"
-        android:fontFamily="@font/nssbold"
-        android:gravity="center_vertical|center"
-        android:text="Pick"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
@@ -123,22 +128,10 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Spinner
-        android:id="@+id/spinner2"
-        android:layout_width="211dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="38dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.421"
-        app:layout_constraintStart_toEndOf="@+id/labelspinner"
-        app:layout_constraintTop_toBottomOf="@+id/buttontimepick" />
-
     <TextView
         android:id="@+id/labelspinner"
-        android:layout_width="136dp"
-        android:layout_height="42dp"
+        android:layout_width="138dp"
+        android:layout_height="35dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="8dp"

@@ -62,40 +62,6 @@
         app:layout_constraintTop_toBottomOf="@+id/maxchars2"
         app:layout_constraintVertical_bias="0.0" />
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="106dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="24dp"
-        android:background="@drawable/roundedbutton"
-        android:fontFamily="@font/nssbold"
-        android:text="Add"
-        android:textColor="@color/white"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.245"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/btncancel2"
-        android:layout_width="106dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="24dp"
-        android:background="@drawable/roundedbutton"
-        android:fontFamily="@font/nssbold"
-        android:text="Cancel"
-        android:textColor="@color/white"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.764"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <TextView
         android:id="@+id/maxchars2"
         android:layout_width="wrap_content"
@@ -119,5 +85,46 @@
         app:layout_constraintHorizontal_bias="0.569"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText2" />
+
+    <LinearLayout
+        android:layout_width="173dp"
+        android:layout_height="58dp"
+        android:layout_marginBottom="16dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageButton
+            android:id="@+id/button2"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+
+            android:background="@drawable/roundedbutton"
+            android:fontFamily="@font/nssbold"
+            android:scaleType="fitCenter"
+            android:src="@drawable/addico"
+            android:text="Add"
+            android:textColor="@color/white"
+            android:visibility="visible" />
+
+        <ImageButton
+            android:id="@+id/btncancel2"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+
+            android:background="@drawable/roundedbutton"
+            android:fontFamily="@font/nssbold"
+            android:scaleType="fitCenter"
+            android:src="@drawable/close"
+            android:text="Cancel"
+            android:textColor="@color/white"
+            android:visibility="visible" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

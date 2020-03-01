@@ -38,11 +38,11 @@ public class Display extends AppCompatActivity {
     TextView subject;
     TextView description;
     TextView date;
-    Button editbtn;
+    ImageButton editbtn;
     TextView days;
-    Button cancel;
+    ImageButton cancel;
     ImageView icon;
-    Button removebutton;
+    ImageButton removebutton;
 
 
     public static Display mdisplay;
@@ -113,7 +113,12 @@ public class Display extends AppCompatActivity {
 
         subject.setText(selectedSubject);
         description.setText(selectedDescription);
-        date.setText(selectedDeadline);
+
+        String[] d = selectedDeadline.split("-");
+        if(d[1].length() == 1) d[1] = "0"+d[1];
+        if(d[2].length() == 1) d[2] = "0"+d[2];
+        String formated = d[0] + "-" + d[1] + "-" + d[2];
+        date.setText(formated);
 
 
         int daysint = Integer.parseInt(selectedDaysleft);

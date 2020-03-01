@@ -18,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -54,8 +55,8 @@ public class subject extends AppCompatActivity {
 
 
 
-        Button add = findViewById(R.id.button2);
-        Button cancel = findViewById(R.id.btncancel2);
+        ImageButton add = findViewById(R.id.button2);
+        ImageButton cancel = findViewById(R.id.btncancel2);
         subjectList = findViewById(R.id.list_subjects);
         mDatabaseHelper = new DatabaseHelper(this);
 

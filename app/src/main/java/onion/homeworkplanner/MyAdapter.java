@@ -357,7 +357,12 @@ public class MyAdapter extends BaseAdapter {
 
         subject.setText(homework.getSubject_homework());
         description.setText(homework.getDescription_homework());
-        deadline.setText(homework.getDate_homework());
+
+        String[] d = homework.getDate_homework().split("-");
+        if(d[1].length() == 1) d[1] = "0"+d[1];
+        if(d[2].length() == 1) d[2] = "0"+d[2];
+        String formated = d[0] + "-" + d[1] + "-" + d[2];
+        deadline.setText(formated);
 
         daysleft.setText(localdaysstring+ " days left");
 

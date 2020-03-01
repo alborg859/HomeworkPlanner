@@ -10,73 +10,14 @@
         android:id="@+id/qrcodeButton2"
         android:layout_width="63dp"
         android:layout_height="60dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginTop="24dp"
         android:background="@android:color/transparent"
         android:scaleType="centerCrop"
         android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="@+id/txtviewdays"
-        app:layout_constraintEnd_toStartOf="@+id/txtviewdays"
-        app:layout_constraintStart_toEndOf="@+id/textView9"
-        app:layout_constraintTop_toTopOf="@+id/txtviewdays"
+        app:layout_constraintEnd_toEndOf="@+id/textView8"
+        app:layout_constraintStart_toStartOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/textView8"
         app:srcCompat="@drawable/qrcodejpg" />
-
-    <Button
-        android:id="@+id/editbtn_display"
-        android:layout_width="106dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/roundedbutton"
-        android:fontFamily="@font/nssbold"
-        android:text="edit"
-        android:textColor="@color/white"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button_removedispla"
-        app:layout_constraintHorizontal_bias="0.482"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView9"
-        app:layout_constraintVertical_bias="0.887" />
-
-    <Button
-        android:id="@+id/button_removedispla"
-        android:layout_width="106dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/roundedbutton_grey"
-        android:fontFamily="@font/nssbold"
-        android:text="remove"
-        android:textColor="@color/white"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/txtviewdays"
-        app:layout_constraintHorizontal_bias="0.441"
-        app:layout_constraintStart_toEndOf="@+id/textView9"
-        app:layout_constraintTop_toBottomOf="@+id/textView9"
-        app:layout_constraintVertical_bias="0.887" />
-
-    <Button
-        android:id="@+id/buttoncancel"
-        android:layout_width="106dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/roundedbutton"
-        android:fontFamily="@font/nssbold"
-        android:text="@android:string/cancel"
-        android:textColor="@color/white"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.593"
-        app:layout_constraintStart_toEndOf="@+id/button_removedispla"
-        app:layout_constraintTop_toBottomOf="@+id/txtviewdays"
-        app:layout_constraintVertical_bias="0.887" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -105,8 +46,8 @@
 
     <TextView
         android:id="@+id/textView8"
-        android:layout_width="301dp"
-        android:layout_height="112dp"
+        android:layout_width="320dp"
+        android:layout_height="141dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
@@ -122,31 +63,76 @@
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="8dp"
         android:fontFamily="@font/nslight"
         android:text="10.04.2010"
         android:textColor="#888"
         android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/imageView2"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        app:layout_constraintBottom_toBottomOf="@+id/qrcodeButton2"
+        app:layout_constraintEnd_toStartOf="@+id/qrcodeButton2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView8"
+        app:layout_constraintTop_toTopOf="@+id/qrcodeButton2" />
 
     <TextView
         android:id="@+id/txtviewdays"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="8dp"
         android:fontFamily="@font/nslight"
         android:text="za ile dni"
         android:textColor="#888"
         android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/qrcodeButton2"
+        app:layout_constraintEnd_toEndOf="@+id/textView8"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/qrcodeButton2"
+        app:layout_constraintTop_toTopOf="@+id/qrcodeButton2" />
+
+    <LinearLayout
+        android:layout_width="359dp"
+        android:layout_height="62dp"
+        android:layout_marginBottom="16dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageButton
+            android:id="@+id/editbtn_display"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:background="@drawable/roundedbutton"
+            android:fontFamily="@font/nssbold"
+            android:scaleType="fitCenter"
+            android:src="@drawable/editico"
+            android:text="edit"
+            android:textColor="@color/white"
+            android:visibility="visible" />
+
+        <ImageButton
+            android:id="@+id/buttoncancel"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/roundedbutton"
+            android:fontFamily="@font/nssbold"
+            android:scaleType="fitCenter"
+            android:src="@drawable/close"
+            android:text="@android:string/cancel"
+            android:textColor="@color/white"
+            android:visibility="visible" />
+
+        <ImageButton
+            android:id="@+id/button_removedispla"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:background="@drawable/roundedbutton"
+            android:fontFamily="@font/nssbold"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_delete"
+            android:text="remove"
+            android:textColor="@color/white"
+            android:visibility="visible" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
