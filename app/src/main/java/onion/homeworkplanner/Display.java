@@ -74,12 +74,12 @@ public class Display extends AppCompatActivity {
                 String subject_str =  subject.getText().toString();
                 String deadline_str = date.getText().toString();
                 String description_str = description.getText().toString();
-                Intent qrintent = new Intent(getApplicationContext(), QRCodeActivity.class);
+                Intent qrintent = new Intent(Display.this, QRCodeActivity.class);
                 qrintent.putExtra("subject", subject_str);
                 qrintent.putExtra("desc", description_str);
                 qrintent.putExtra("deadline", deadline_str);
                 qrintent.putExtra("alldata", "");
-                getApplicationContext().startActivity(qrintent);
+                startActivity(qrintent);
             }
         });
 

@@ -60,7 +60,7 @@ public class Options extends AppCompatActivity implements TimePickerDialog.OnTim
                 String test = mHomeworkHelper.getAllHomeworksToString();
                 Intent qrintent = new Intent(getApplicationContext(), QRCodeActivity.class);
                 qrintent.putExtra("alldata", test);
-                getApplicationContext().startActivity(qrintent);
+                startActivity(qrintent);
 
             }
         });
